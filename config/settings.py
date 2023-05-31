@@ -14,6 +14,7 @@ from pathlib import Path
 
 import environ
 import os
+import socket
 
 env = environ.Env(
     # set casting, default value
@@ -153,3 +154,10 @@ LOGIN_REDIRECT_URL = '/'
 
 # 로그아웃시 이동하는 URL
 LOGOUT_REDIRECT_URL = '/'
+
+def get_ipaddress():
+    host_name = socket.gethostname()
+    ip_address = socket.gethostbyname(host_name)
+    return "https://port-0-gwigwang-das6e2dlia1qnkd.sel4.cloudtype.app/"+ip_address
+
+CSRF_TRUSTED_ORIGINS = [get_ipaddress()]
