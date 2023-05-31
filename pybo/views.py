@@ -8,8 +8,7 @@ from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+
 
 
 
@@ -113,5 +112,3 @@ def answer_delete(request, answer_id):
         answer.delete()
     return redirect('pybo:detail', question_id=answer.question.id)
 
-@method_decorator(csrf_exempt,name='dispatch')
-class SavePoll(APIView):
