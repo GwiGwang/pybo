@@ -21,6 +21,8 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
+# reading .env file
+environ.Env.read_env()
 # Set the project base directory
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,6 +100,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    'default': env.db(),
+    # read os.environ['SQLITE_URL']
+    'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db'),
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
