@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>귀광 WORLD</title>
 </head>
 <body>
 {% extends 'base.html' %}
@@ -13,11 +13,11 @@
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="mb-3">
-            <label for="content" class="form-label">답변내용</label>
+            <label for="content" class="form-label">댓글 쓰기</label>
             <textarea class="form-control" name="content" id="content"
                       rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <button type="submit" class="btn btn-primary">댓글 달기</button>
     </form>
 </div>
 {% endblock %}
